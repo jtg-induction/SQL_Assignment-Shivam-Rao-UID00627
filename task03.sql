@@ -6,7 +6,7 @@ WHERE rating = 'R';
 -- 3.2
 
 SELECT title, duration_minutes FROM movies
-WHERE duration_minutes < 100 ORDER BY duration_minutes DESC;
+WHERE duration_minutes < 100 ORDER BY duration_minutes;
 
 -- 3.3
 
@@ -17,7 +17,7 @@ LIMIT 5;
 -- 3.4
 
 SELECT full_name, loyalty_points FROM customers
-WHERE (SELECT EXTRACT(YEAR FROM joined_on)) = '2026'
+WHERE EXTRACT(YEAR FROM joined_on) = 2026
     AND loyalty_points >= 50; 
 
 -- 3.5
