@@ -37,7 +37,7 @@ HAVING SUM(b.seats_booked) > 10;
 SELECT st.showtime_id, m.title, s.screen_name, s.capacity,
         SUM(b.seats_booked) Seats_Sold,
         ROUND(((SUM(b.seats_booked*100.0)/s.capacity)),2) Percent_Full
-FROM  showtimes st INNER JOIN screens s ON st.screen_id = s.screen_id
+FROM  showtimes st LEFT JOIN screens s ON st.screen_id = s.screen_id
 INNER JOIN movies m ON m.movie_id = st.movie_id
 INNER JOIN bookings b ON b.showtime_id = st.showtime_id
 WHERE b.status = 'confirmed'
