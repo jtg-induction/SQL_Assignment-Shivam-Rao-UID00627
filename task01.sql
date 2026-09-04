@@ -15,8 +15,8 @@ CREATE TABLE screens (
 
 CREATE TABLE showtimes (
     showtime_id     SERIAL          PRIMARY KEY,
-    movie_id        SERIAL          NOT NULL,
-    screen_id       SERIAL          NOT NULL,
+    movie_id        INT          NOT NULL,
+    screen_id       INT          NOT NULL,
     show_date       DATE            NOT NULL,
     start_time      TIME            NOT NULL,
     ticket_price    NUMERIC(6,2)    NOT NULL,
@@ -26,8 +26,8 @@ CREATE TABLE showtimes (
 
 CREATE TABLE bookings (
     booking_id      SERIAL  PRIMARY KEY,
-    customer_id     SERIAL  NOT NULL,
-    showtime_id     SERIAL  NOT NULL,
+    customer_id     INT  NOT NULL,
+    showtime_id     INT  NOT NULL,
     seats_booked    INT     NOT NULL,
     booked_at       TIME    DEFAULT NOW(),
     status          TEXT    NOT NULL DEFAULT 'confirmed',
