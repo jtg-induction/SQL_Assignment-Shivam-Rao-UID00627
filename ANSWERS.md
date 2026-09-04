@@ -57,3 +57,10 @@ row 7 of the ledger says *"Ava Thomson"* while every other row says *"Ava Thomps
 # Answer:
 The 3NF Normal Form makes this bus structurally impossible beacuse we cannot store the same name multiple times in the customer table as it is associcated with a customer_id and an email.
 
+
+## TASK 9
+
+# Question:
+why couldn't 9.4 be done with plain `GROUP BY` in a single query?
+# Answer:
+Because when we use GROUP BY it collapses the rows where as partition keeps them intact.
