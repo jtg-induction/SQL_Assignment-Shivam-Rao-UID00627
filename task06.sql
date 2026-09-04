@@ -6,11 +6,17 @@ WHERE ticket_price > (SELECT AVG(ticket_price) FROM showtimes);
 
 -- 6.2
 
+-- SELECT c.full_name
+-- FROM customers c INNER JOIN bookings b ON c.customer_id = b.customer_id
+-- INNER JOIN showtimes s ON b.showtime_id = s.showtime_id
+-- INNER JOIN (SELECT movie_id FROM movies WHERE genre IN ('Thriller')) m ON s.movie_id = m.movie_id
+-- WHERE b.status = 'confirmed';
+
 SELECT c.full_name
-FROM customers c INNER JOIN bookings b ON c.customer_id = b.customer_id
-INNER JOIN showtimes s ON b.showtime_id = s.showtime_id
-INNER JOIN (SELECT movie_id FROM movies WHERE genre IN ('Thriller')) m ON s.movie_id = m.movie_id
-WHERE b.status = 'confirmed';
+    FROM customers c INNER JOIN bookings b ON c.customer_id = b.customer_id
+    INNER JOIN showtimes s ON b.showtime_id = s.showtime_id
+    WHERE s.movie_id IN (SELECT m.movie_id from movies m WHERE m.genre = 'Thriller')
+    AND b.status = 'confirmed';
 
 -- 6.3
 
