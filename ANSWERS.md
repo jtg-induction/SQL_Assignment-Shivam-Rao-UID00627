@@ -64,3 +64,15 @@ The 3NF Normal Form makes this bus structurally impossible beacuse we cannot sto
 why couldn't 9.4 be done with plain `GROUP BY` in a single query?
 # Answer:
 Because when we use GROUP BY it collapses the rows where as partition keeps them intact.
+
+
+## TASK 10
+
+# Question:
+map this task to **ACID**, one sentence per letter: which step demonstrated **A**tomicity? Where did your Task 7 constraints enforce **C**onsistency? What would **I**solation protect against on a busy premiere night? What does **D**urability promise after `COMMIT`?
+
+# Answer:
+**A:** Step 10.1 demonstrates atomicity because the entire transaction is executed.
+**C:** Task 7 demonstrates consistency by preventing invalid data.
+**I:** Isolation would protect concurrent bookings on a busy premiere night by preventing double booking seats.
+**D:** It means that after ```COMMIT```, the booking and loyalty points are intact even if the database crashes or restarts.
