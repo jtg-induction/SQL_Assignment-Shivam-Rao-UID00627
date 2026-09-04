@@ -59,3 +59,4 @@ COMMIT;
 DELETE FROM bookings
 WHERE booking_id = (SELECT MAX(booking_id) FROM bookings);
 --
+
