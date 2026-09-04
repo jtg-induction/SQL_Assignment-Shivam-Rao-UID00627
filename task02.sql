@@ -44,12 +44,14 @@ UPDATE customers
 SET loyalty_points = loyalty_points + 25
 WHERE email = (SELECT email FROM customers WHERE  full_name = 'Elena Petrova');
 
---2.8
-
-DELETE FROM showtimes
-WHERE movie_id = (SELECT movie_id FROM movies where title = 'Hollow Peak')
+--2.7
+WITH hollow_peak_id AS(
+    SELECT movie_id
+    FROM movies
+    WHERE title = 'Hollow Peak'
+)DELETE FROM showtimes
+WHERE movie_id = hollow_peak_id
     AND show_date = '2026-08-16'
     AND showtime_id > (SELECT min(showtime_id) FROM showtimes 
-                        WHERE movie_id = (SELECT movie_id FROM movies 
-                                            WHERE title = 'Hollow Peak') 
-                                            AND show_date = '2026-08-16');
+                        WHERE movie_id = hollow_peak_id 
+                        AND show_date = '2026-08-16');
