@@ -12,6 +12,7 @@ ORDER BY total DESC;
 SELECT m.genre, SUM(b.seats_booked) total_seats
 FROM bookings b INNER JOIN showtimes s ON b.showtime_id = s.showtime_id
 INNER JOIN movies m ON s.movie_id = m.movie_id
+WHERE b.status = 'confirmed'
 GROUP BY m.genre
 ORDER BY total_seats DESC;
 
@@ -27,6 +28,7 @@ ORDER BY average_price;
 SELECT m.genre, SUM(b.seats_booked)
 FROM movies m INNER JOIN showtimes s ON m.movie_id = s.movie_id
 INNER JOIN bookings b ON s.showtime_id = b.showtime_id
+WHERE b.status = 'confirmed'
 GROUP BY m.genre
 HAVING SUM(b.seats_booked) > 10;
 
