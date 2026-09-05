@@ -10,7 +10,7 @@ Since WHERE is executed before the SELECT clause so sale_price is alias is not a
 # Question:
 why must the "cancelled" filter live in `WHERE` here rather than `HAVING`?
 # Answer:
-Because HAVING is used with AGGREGATE functions.
+Because HAVING is used with AGGREGATE functions. `WHERE` filter the rows (i.e. cancelled bookings) before the aggregation which is required to exclude filter out the cancelled bookings.
 
 
 ## TASK 6
@@ -50,7 +50,7 @@ Violated by seats column
 No partial dependency present as not a composite key
 
 3NF - No Non Prime/Key attribute should be derived by any Non Prime/Key attribute
-In the legacy_bookings the genre attribute can be derived by any of the other attributes.
+The movie_genre attribute violates 3NF because it is functionally dependent on movie_title that is a non-key attribute, creating a a transitive dependency.
 
 # Question:
 row 7 of the ledger says *"Ava Thomson"* while every other row says *"Ava Thompson"*. In one paragraph: which normalization principle makes this class of bug **structurally impossible** in your new schema, and why?
