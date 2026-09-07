@@ -12,15 +12,16 @@ GROUP BY m.title;
 
 
 -- 9.2
-SELECT m.genre,
-    SUM(b.seats_booked) AS seats,
+SELECT m.genre, m.title,
+    SUM(b.seats_booked * st.ticket_price) AS revenue,
     RANK() OVER (
-        ORDER BY SUM(b.seats_booked) DESC
+        PARTITION BY m.genre
+        ORDER BY SUM(b.seats_booked * st.ticket_price) DESC
     ) AS genre_rank
 FROM bookings b INNER JOIN showtimes st ON b.showtime_id = st.showtime_id
 INNER JOIN movies m ON m.movie_id = st.movie_id
 WHERE b.status = 'confirmed'
-GROUP BY m.genre;
+GROUP BY m.genre, m.title;
 
 
 -- 9.3 
