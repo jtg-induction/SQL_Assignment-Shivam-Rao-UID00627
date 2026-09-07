@@ -14,7 +14,7 @@ INSERT INTO bookings
 
 UPDATE customers
 SET loyalty_points = loyalty_points + 10
-WHERE full_name = 'Elena Ptrova';
+WHERE full_name = 'Elena Petrova';
 
 COMMIT;
 
